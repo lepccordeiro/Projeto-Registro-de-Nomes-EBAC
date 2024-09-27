@@ -2,6 +2,26 @@
 #include <stdlib.h> // biblioteca de alocação de espaço de memoria
 #include <locale.h> // biblioteca de alocação de texto por região
 
+
+int registrar()
+{
+	printf("Voce escolheu registrar nomes!\n");
+	system("pause");	
+}
+
+int consultar()
+{
+	printf("Voce escolheu consultar nomes!\n");
+	system("pause");	
+}
+
+int deletar()
+{
+	printf("Voce escolheu apagar nomes!\n");
+	system("pause");	
+}
+
+
 int main()
 {
 	int opcao=0; // definindo variaveis
@@ -29,18 +49,15 @@ int main()
 		switch (opcao)
 		{
 			case 1:
-			printf("Voce escolheu registrar nomes!\n");
-			system("pause");
+			registrar();
 			break;
 			
 			case 2:
-			printf("Voce escolheu consultar nomes!\n");
-			system("pause");
+			consultar();	
 			break;
 			
 			case 3:
-			printf("Voce escolheu apagar nomes!\n");
-			system("pause");
+			deletar();
 			break;
 			
 			default:
