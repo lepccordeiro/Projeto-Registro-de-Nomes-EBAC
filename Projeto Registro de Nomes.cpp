@@ -134,7 +134,8 @@ int main()
 		printf("Escolha a Opção desejada:\n\n\n");
 		printf("\t1 - Registrar Nome\n");
 		printf("\t2 - Consultar Nome\n");
-		printf("\t3 - Apagar Nome do Registro\n\n\n\n");
+		printf("\t3 - Apagar Nome do Registro\n");
+		printf("\t4 - Sair do programa\n\n\n");
 		printf("Opção: "); // fim do menu
 	
 		scanf("%d", &opcao); // armazenando a opção do usuario
@@ -155,8 +156,13 @@ int main()
 			deletar();
 			break;
 			
+			case 4:
+			printf("Obrigado por usar o programa!\n");
+			return 0;
+			break;	
+			
 			default:
-			printf("Infelizmente esta opção não está disponível! Favor escolher entre as opções 1, 2 ou 3.\n");
+			printf("Infelizmente esta opção não está disponível! Favor escolher entre as opções 1, 2, 3 ou 4.\n");
 			system("pause");
 			break;	
 			// fim da seleção do menu
