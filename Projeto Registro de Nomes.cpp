@@ -1,21 +1,21 @@
-#include <stdio.h> // biblioteca de comunicação com o usuário
+#include <stdio.h> // biblioteca de comunicação com o usuário - todo comando "printf" irá buscar os dados dessas bibliotecas
 #include <stdlib.h> // biblioteca de alocação de espaço de memoria
 #include <locale.h> // biblioteca de alocação de texto por região
 #include <string.h> // biblioteca responsavel pelas string
 
 
-int registrar()
+int registrar() // so enxerga o que esta dentro dos colchetes, funçao para registrar os usuarios no sistema
 {
 	setlocale(LC_ALL, "portuguese"); // definindo a linguagem
 	
-	char arquivo[40]; //criação da variavel "arquivo" com o tamanho de 40 caracteres (comando char)
+	char arquivo[40]; //criação da variavel "arquivo" com o tamanho de 40 caracteres (comando char), pode ser letra ou numero
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
 	
-	printf("Digite o CPF a ser cadastrado: "); // pergunta que aparece ao usuário
-	scanf("%s",cpf); // será salvo como na vaiavel (comando "%") como uma string (letra "s"), neste caso "cpf" que é um conjunto de variáveis
+	printf("Digite o CPF a ser cadastrado: "); // pergunta que aparece ao usuário, para coletar informações
+	scanf("%s",cpf); // será salvo como na variavel (comando "%") como uma string (letra "s"), neste caso "cpf" que é um conjunto de variáveis
 	
 	strcpy(arquivo,cpf); // responsavel por copiar os valores da string	
 	
@@ -28,12 +28,12 @@ int registrar()
 	fprintf(file,","); // cria um espaço entre os dados, apra que não fique tudo junto na mesma linha
 	fclose(file); 
 	
-	printf("Digite o nome a ser cadastrado: ");
+	printf("Digite o nome a ser cadastrado: "); // pergunta feita ao usuario
 	scanf("%s",nome);
 	
-	file = fopen(arquivo,"a");
-	fprintf(file,nome);
-	fclose(file);
+	file = fopen(arquivo,"a"); // Abre o arquivo uma única vez no modo "a" (append)
+	fprintf(file,nome); //salva a string "nome" no arquivo "file"
+	fclose(file); // Fecha o arquivo após todas as operações serem concluídas
 		
 	file = fopen(arquivo,"a");  
 	fprintf(file,","); 
@@ -66,7 +66,7 @@ int registrar()
 	
 }
 
-int consultar()
+int consultar() // so enxerga o que esta dentro dos colchetes
 {
 	setlocale(LC_ALL, "portuguese"); // definindo a linguagem
 	
@@ -93,10 +93,27 @@ int consultar()
 	system("pause");
 }
 
-int deletar()
+int deletar() // so enxerga o que esta dentro dos colchetes
 {
-	printf("Voce escolheu apagar nomes!\n");
-	system("pause");	
+		
+	char cpf[40];
+	
+	printf("Digite o cpf a ser deletado: ");
+	scanf("%s",cpf); // ira buscar todas as variaveis no "string" nos arquivos, por causa do comando "s"
+	
+	remove(cpf); // ira remover a string com o cpf informado
+	
+	
+	FILE *file; // entrar na biblioteca de arquivos (FILE), e dentro dela buscar os arquivos de interesse (*file)
+	file = fopen(cpf, "r");  // o arquivo file é igual a (função abrir arquivo {fopen} e buscar o cpf informado) e ler ("r") o valor
+	
+	if (file == NULL) // Verifica se o arquivo existe
+    {
+        printf("Esse cpf foi deletado ou não está cadastrado.\n");
+        system("pause");
+    }
+    
+     	
 }
 
 
@@ -122,12 +139,12 @@ int main()
 	
 		scanf("%d", &opcao); // armazenando a opção do usuario
 	
-		system("cls");
+		system("cls"); // limpa a tela
 		
-		switch (opcao)
+		switch (opcao) //começo da seleção do menu
 		{
 			case 1:
-			registrar();
+			registrar(); //chamada de funções
 			break;
 			
 			case 2:
@@ -142,7 +159,7 @@ int main()
 			printf("Infelizmente esta opção não está disponível! Favor escolher entre as opções 1, 2 ou 3.\n");
 			system("pause");
 			break;	
-	
+			// fim da seleção do menu
 			
 		}
 	}
